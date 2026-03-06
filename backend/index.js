@@ -7,8 +7,11 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin:
+    origin: [
       'https://germanjobassistant-ne7aae9mn-gitapoorv18s-projects.vercel.app',
+      'https://germanjobassistant-82bf3cvy7-gitapoorv18s-projects.vercel.app',
+      /https:\/\/.*\.vercel\.app$/, // allows ALL vercel URLs
+    ],
   })
 );
 app.use(express.json());
