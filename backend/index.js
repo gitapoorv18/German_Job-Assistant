@@ -7,8 +7,8 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: 'https://your-vercel-app.vercel.app',
-    methods: ['GET', 'POST'],
+    origin:
+      'https://germanjobassistant-ne7aae9mn-gitapoorv18s-projects.vercel.app',
   })
 );
 app.use(express.json());
