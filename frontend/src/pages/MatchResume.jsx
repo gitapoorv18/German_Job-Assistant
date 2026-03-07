@@ -75,7 +75,7 @@ function MatchResume() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Left — Inputs */}
         <div className="flex flex-col gap-4">
           {/* Job Description */}

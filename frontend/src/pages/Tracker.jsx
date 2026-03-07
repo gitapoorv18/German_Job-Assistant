@@ -157,7 +157,7 @@ function Tracker() {
       )}
 
       {/* Stats */}
-      <div className="grid grid-cols-5 gap-3 mb-6">
+      <div className="grid grid-cols-3 md:grid-cols-5 gap-3 mb-6">
         {Object.entries(counts).map(([status, count]) => (
           <button
             key={status}
@@ -184,84 +184,86 @@ function Tracker() {
             </div>
           </div>
         ) : (
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-gray-100">
-                <th className="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider px-6 py-3">
-                  Company
-                </th>
-                <th className="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider px-6 py-3">
-                  Role
-                </th>
-                <th className="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider px-6 py-3">
-                  Status
-                </th>
-                <th className="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider px-6 py-3">
-                  Score
-                </th>
-                <th className="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider px-6 py-3">
-                  Date
-                </th>
-                <th className="px-6 py-3"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.map((app, i) => (
-                <tr
-                  key={app.id}
-                  className={`border-b border-gray-50 hover:bg-gray-50 transition-colors ${
-                    i === filtered.length - 1 ? 'border-none' : ''
-                  }`}
-                >
-                  <td className="px-6 py-4 text-sm font-medium text-gray-900">
-                    {app.company}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-500">
-                    {app.role}
-                  </td>
-                  <td className="px-6 py-4">
-                    <select
-                      value={app.status}
-                      onChange={(e) => updateStatus(app.id, e.target.value)}
-                      className={`text-xs font-medium px-2.5 py-1 rounded-full border cursor-pointer focus:outline-none ${
-                        STATUS_COLORS[app.status]
-                      }`}
-                    >
-                      {Object.keys(STATUS_COLORS).map((s) => (
-                        <option key={s}>{s}</option>
-                      ))}
-                    </select>
-                  </td>
-                  <td className="px-6 py-4">
-                    {app.score > 0 && (
-                      <span
-                        className={`text-xs font-semibold ${
-                          app.score >= 80
-                            ? 'text-green-600'
-                            : app.score >= 60
-                            ? 'text-yellow-500'
-                            : 'text-red-500'
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-gray-100">
+                  <th className="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider px-6 py-3">
+                    Company
+                  </th>
+                  <th className="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider px-6 py-3">
+                    Role
+                  </th>
+                  <th className="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider px-6 py-3">
+                    Status
+                  </th>
+                  <th className="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider px-6 py-3">
+                    Score
+                  </th>
+                  <th className="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider px-6 py-3">
+                    Date
+                  </th>
+                  <th className="px-6 py-3"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map((app, i) => (
+                  <tr
+                    key={app.id}
+                    className={`border-b border-gray-50 hover:bg-gray-50 transition-colors ${
+                      i === filtered.length - 1 ? 'border-none' : ''
+                    }`}
+                  >
+                    <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                      {app.company}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-500">
+                      {app.role}
+                    </td>
+                    <td className="px-6 py-4">
+                      <select
+                        value={app.status}
+                        onChange={(e) => updateStatus(app.id, e.target.value)}
+                        className={`text-xs font-medium px-2.5 py-1 rounded-full border cursor-pointer focus:outline-none ${
+                          STATUS_COLORS[app.status]
                         }`}
                       >
-                        {app.score}%
-                      </span>
-                    )}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-400">
-                    {app.date}
-                  </td>
-                  <td className="px-6 py-4">
-                    <button
-                      onClick={() => deleteApplication(app.id)}
-                      className="text-gray-300 hover:text-red-400 transition-colors text-lg"
-                    >
-                      ×
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                        {Object.keys(STATUS_COLORS).map((s) => (
+                          <option key={s}>{s}</option>
+                        ))}
+                      </select>
+                    </td>
+                    <td className="px-6 py-4">
+                      {app.score > 0 && (
+                        <span
+                          className={`text-xs font-semibold ${
+                            app.score >= 80
+                              ? 'text-green-600'
+                              : app.score >= 60
+                              ? 'text-yellow-500'
+                              : 'text-red-500'
+                          }`}
+                        >
+                          {app.score}%
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-400">
+                      {app.date}
+                    </td>
+                    <td className="px-6 py-4">
+                      <button
+                        onClick={() => deleteApplication(app.id)}
+                        className="text-gray-300 hover:text-red-400 transition-colors text-lg"
+                      >
+                        ×
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

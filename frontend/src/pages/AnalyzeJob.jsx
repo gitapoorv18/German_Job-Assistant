@@ -37,7 +37,7 @@ function AnalyzeJob() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Left — Input */}
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
           <label className="text-sm font-medium text-gray-700 mb-2 block">

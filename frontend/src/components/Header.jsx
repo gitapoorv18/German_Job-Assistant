@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Header() {
+function Header({ sidebarOpen, setSidebarOpen }) {
   const [skills, setSkills] = useState([
     'Frontend Dev',
     'Data Analysis',
@@ -26,21 +26,32 @@ function Header() {
       </div>
 
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between">
+      <div className="bg-white border-b border-gray-200 px-4 md:px-8 py-4 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-lg shadow-sm">
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            <div className="w-5 h-0.5 bg-gray-600 mb-1" />
+            <div className="w-5 h-0.5 bg-gray-600 mb-1" />
+            <div className="w-5 h-0.5 bg-gray-600" />
+          </button>
+
+          <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-lg shadow-sm flex-shrink-0">
             🇩🇪
           </div>
           <div>
-            <h1 className="text-lg font-semibold text-gray-900 leading-tight">
+            <h1 className="text-base md:text-lg font-semibold text-gray-900 leading-tight">
               German Job Assistant
             </h1>
-            <p className="text-xs text-gray-400">Powered by Gemini AI</p>
+            <p className="text-xs text-gray-400 hidden sm:block">
+              Powered by Claude AI
+            </p>
           </div>
         </div>
 
         {/* Skill Tags */}
-        <div className="flex gap-2 items-center flex-wrap">
+        <div className="hidden md:flex gap-2 items-center flex-wrap">
           {skills.map((tag, index) => (
             <span
               key={index}
