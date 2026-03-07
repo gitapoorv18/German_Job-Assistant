@@ -37,7 +37,7 @@ function Header({ sidebarOpen, setSidebarOpen }) {
             <div className="w-5 h-0.5 bg-gray-600" />
           </button>
 
-          <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-lg shadow-sm flex-shrink-0">
+          <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-lg shadow-sm shrink-0">
             🇩🇪
           </div>
           <div>
